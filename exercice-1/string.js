@@ -36,33 +36,62 @@ function snake_case(str) {
 }
 
 function pro_access(object, str) {
-	obj = '';
 	if (str.length > 0 && object != null) {
+		obj = object;
 		str = str.split('.');
 
-		for (type in object) {
-			if (object.type != undefined) {
-				obj = obj + '.' + obj
-				console.log(obj);
-			}
+		for (test in object) {
+			console.log();
 		}
 	}
-
-	return str;
 } pro_access({animal: {type: {name: "Test"}}}, 'animal.type.name');
 
-function leet(str) {
+function leet(message) {
+	var messageLeet = "";
+ 
+	for (var i = 0; i < message.length; i++) {
+  		if (message[i].toLowerCase() === "l") { messageLeet += "1"; }
+  		else if (message[i].toLowerCase() === "e") { messageLeet += "3"; }
+  		else if (message[i].toLowerCase() === "a") { messageLeet += "4"; }
+		else if (message[i].toLowerCase() === "t") { messageLeet += "7"; }
+		else if (message[i].toLowerCase() === "s") { messageLeet += "5"; }
+		else if (message[i].toLowerCase() === "o") { messageLeet += "0"; }
+		else { messageLeet += message[i].toLowerCase(); }
+	}
 
+	return messageLeet
 }
 
 function verlan(str) {
+	if (str.length > 0) {
+		return str.split("").reverse().join("").split(" ").reverse().join(" ");
+	}
 
+	return str;
 }
 
 function yoda(str) {
+	if (str.length > 0) {
+		var arr = str.split(" ");
+		arr.reverse();
+		str = arr.join(" ");
 
+		return str;
+	}
+
+	return str;
 }
 
-function vig(str) {
-
+function ordA(a) {
+  return a.charCodeAt(0) - 65;
+}
+ 
+// vigenere
+function vig(text, key, decode) {
+  var i = 0, b;
+  key = key.toUpperCase().replace(/[^A-Z]/g, '');
+  return text.toUpperCase().replace(/[^A-Z]/g, '').replace(/[A-Z]/g, function(a) {
+    b = key[i++ % key.length];
+    return String.fromCharCode(((ordA(a) + (decode ? 26 - ordA(b) : ordA(b))) % 26 + 65));
+  });
 }
