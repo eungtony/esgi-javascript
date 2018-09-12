@@ -35,16 +35,17 @@ function snake_case(str) {
 	return str;
 }
 
-function pro_access(object, str) {
+function prop_access(object, str) {
 	if (str.length > 0 && object != null) {
 		obj = object;
 		str = str.split('.');
 
-		for (test in object) {
-			console.log();
-		}
+		str.forEach(function (arrayItem) {
+			obj = obj + '.' + arrayItem
+		});
+    	return obj;
 	}
-} pro_access({animal: {type: {name: "Test"}}}, 'animal.type.name');
+} prop_access({animal: {type: {name: "Test"}}}, 'animal.type.name');
 
 function leet(message) {
 	var messageLeet = "";
